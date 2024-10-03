@@ -82,7 +82,7 @@ class VisitorExit extends Component {
   handleFetchVisitorImage = async (cardNo) => {
     const today = new Date();
     const formattedDate = today.toISOString().split('T')[0]; // Format date as yyyy-MM-dd
-    const imageUrl = `http://localhost:8080/image/getIDImg/${cardNo}/${formattedDate}`;
+    const imageUrl = `https://cit-secure-backend.onrender.com/image/getIDImg/${cardNo}/${formattedDate}`;
 
     console.log(`Fetching image from URL: ${imageUrl}`); // Log the URL to verify it's correct
 
@@ -113,7 +113,7 @@ handleLogin = async (e) => {
   }, 10000);  // 10-second timeout
 
   try {
-    const response = await axios.get(`http://localhost:8080/visitor/getVisitorByCardNo/${cardNo}`);
+    const response = await axios.get(`https://cit-secure-backend.onrender.com/visitor/getVisitorByCardNo/${cardNo}`);
     clearTimeout(timeoutId); // Clear the timeout if the request succeeds
 
     if (response.data) {
@@ -145,7 +145,7 @@ handleConfirmExit = async () => {
   try {
     const timeOut = `${hours}:${minutes} ${ampm}`;
     const response = await axios.put(
-      `http://localhost:8080/visitor/updateVisitorTimeOut/${cardNo}?timeOut=${timeOut}`,
+      `https://cit-secure-backend.onrender.com/visitor/updateVisitorTimeOut/${cardNo}?timeOut=${timeOut}`,
       {},
       {
         headers: { 'Content-Type': 'application/json' },
