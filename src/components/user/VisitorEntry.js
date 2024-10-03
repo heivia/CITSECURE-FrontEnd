@@ -35,7 +35,7 @@ class VisitorEntry extends Component {
   // Fetch the next available card number from the backend
   fetchNextCardNumber = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/visitor/nextCardNumber');
+      const response = await axios.get('https://cit-secure-backend.onrender.com/visitor/nextCardNumber');
       const nextCardNumber = response.data.nextCardNo;
       this.setState({ cardNo: nextCardNumber });
     } catch (error) {
@@ -66,7 +66,7 @@ class VisitorEntry extends Component {
 
   checkCardUsage = async (cardNo) => {
     try {
-      const response = await axios.get(`http://localhost:8080/visitor/checkcard/${cardNo}`);
+      const response = await axios.get(`https://cit-secure-backend.onrender.com/visitor/checkcard/${cardNo}`);
       return response.data.isUsed;
     } catch (error) {
       console.error('Failed to check card usage:', error.message);
@@ -88,7 +88,7 @@ class VisitorEntry extends Component {
     formData.append('timeIn', formattedTime);
 
     try {
-      const response = await axios.post('http://localhost:8080/image/uploadIDImg', formData, {
+      const response = await axios.post('https://cit-secure-backend.onrender.com/image/uploadIDImg', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -145,7 +145,7 @@ class VisitorEntry extends Component {
 
       console.log('Sending data to server:', formData);
 
-      const response = await axios.post('http://localhost:8080/visitor/addVisitor', formData, {
+      const response = await axios.post('https://cit-secure-backend.onrender.com/visitor/addVisitor', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
