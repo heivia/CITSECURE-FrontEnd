@@ -73,7 +73,7 @@ class VisitorPhoto extends Component {
     formData.append('timeIn', formattedTime); // Use formattedTime
 
     try {
-      const response = await axios.post('http://localhost:8080/image/uploadVisitorImg', formData, {
+      const response = await axios.post('https://cit-secure-backend.onrender.com/image/uploadVisitorImg', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
